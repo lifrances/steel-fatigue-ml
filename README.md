@@ -5,7 +5,11 @@ This project predicts steel fatigue using a combination of physics-informed feat
 Place the dataset files in the repository root directory:
 
 - original_data.csv
+- preprocessed_data_no_CE.csv
 - preprocessed_data.csv
+- preprocessed_data_no_HJP.csv
+- preprocessed_data_no_logC.csv
+- preprocessed_data_no_sixthC.csv
 
 No preprocessing is required beyond what is already provided in these files.
 
