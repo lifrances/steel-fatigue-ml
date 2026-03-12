@@ -17,7 +17,7 @@ In addition to the original dataset features, metallurgical-based engineered fea
 
 The models were trained and evaluated on both the original dataset and a physically preprocessed dataset to assess the impact of these engineered features.
 
-## Repository structure
+## Repository Structure
 
 ```
 steel-fatigue-ml/
