@@ -1,6 +1,6 @@
 # Predicting Steel Fatigue Strength Using Modern Data-Driven Models
 
-## Project Overview
+## Overview
 Fatigue failure accounts for a large proportion of structural failures in engineering systems. Accurately predicting fatigue strength is therefore critical for designing reliable steel components. However, experimental fatigue testing is costly and time-consuming, motivating the development of data-driven prediction models. 
 
 This project investigates whether physics-informed feature engineering combined with machine learning models can improve fatigue strength prediction for steels. We compare three regression models: 
