@@ -2,7 +2,7 @@
 This project predicts steel fatigue using a combination of physics-informed feature engineering and machine learning. We compare multiple models, including linear regression, Ridge regression, and XGBoost, to evaluate prediction accuracy and feature importance.
 
 ## Dataset
-Place the dataset files in the repository root:
+Place the dataset files in the repository root directory:
 
 - original_data.csv
 - preprocessed_data.csv
@@ -16,12 +16,7 @@ pip install -r requirements.txt
 
 ## Running the Analysis
 
-1. Mount the dataset (if using Google Colab):
-
-from google.colab import drive
-drive.mount('/content/drive')
-
-2. Run the main analysis script:
+Run the main analysis script:
 [NAME OF THE SCRIPT]
 
 This script performs:
