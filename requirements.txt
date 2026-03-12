@@ -1,9 +1,6 @@
-pandas 
+pandas
 numpy
-matploblib
-seaborn
 scikit-learn
 xgboost
 optuna
-kaleido
-tqdm
+matplotlib
