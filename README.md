@@ -9,7 +9,7 @@ This project investigates whether physics-informed feature engineering combined 
 - Ridge Regression
 - XGBoost
 
-In addition to the original dataset features, domain-informed descriptors were introduced, including: 
+In addition to the original dataset features, metallurgical-based engineered features were introduced, including: 
 
 - Hollomon-Jaffe Parameter (HJP)
 - Carbon Equivalent (CE)
