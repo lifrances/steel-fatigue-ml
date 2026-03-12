@@ -72,7 +72,7 @@ pip install -r requirements.txt
 
 The required packages include libraries such as pandas, numpy, scikit-learn, xgboost, optuna, and matplotlib.
 
-## Running the Analysis
+## Running Instructions
 
 To run the full modeling pipeline:
 ```
