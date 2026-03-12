@@ -57,7 +57,7 @@ All datasets required to run the project are stored in the `data/` directory:
 - `preprocessed_data_no_logC.csv`
 - `preprocessed_data_no_sixthC.csv`
 
-The project automatically loads the datasets and performs an 80/20 train-test split during execution.
+The datasets are automatically loaded from the `data/` directory and split into training and testing sets during execution. 
 
 ## Installation
 
