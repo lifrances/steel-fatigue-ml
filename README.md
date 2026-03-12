@@ -1,29 +1,33 @@
 ## Project Overview
-This project applies machine learning methods to predict fatigue strength in steels using metallurgically informed features. We evaluate multiple regression models, including linear regression, ridge regression, and XGBoost, and investigate the impact of physics-informed feature engineering on predictive performance.
+This project predicts steel fatigue using a combination of physics-informed feature engineering and machine learning. We compare multiple models, including linear regression, Ridge regression, and XGBoost, to evaluate prediction accuracy and feature importance.
 
-## Data
-The dataset used in this project originates from the NIMS fatigue database.
-Download the dataset from:
+## Dataset
+Place the dataset files in the repository root:
 
-[https://www.kaggle.com/datasets/chaozhuang/steel-fatigue-strength-prediction/data]
+- original_data.csv
+- preprocessed_data.csv
 
-Place the dataset in the following directory:
-
-data/steel_fatigue_dataset.csv
+No preprocessing is required beyond what is already provided in these files.
 
 ## Requirements
-Install dependencies with:
+Install the required Python packages using:
 
 pip install -r requirements.txt
 
 ## Running the Analysis
 
-To reproduce the results in the paper, run:
-python main.py
+1. Mount the dataset (if using Google Colab):
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+2. Run the main analysis script:
+[NAME OF THE SCRIPT]
 
 This script performs:
-- Data loading and preprocessing
-- Feature engineering
+- Data splitting (train/test)
 - Model training (Linear, Ridge, XGBoost)
-- Hyperparameter optimization using Optuna
-- Model evaluation and comparison
+- Hyperparameter tuning with Optuna
+- Evaluation metrics (R², RMSE, MAE)
+- Visualization of predicted vs. actual values, residuals, and feature importance
+- Ablation study results
