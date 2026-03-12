@@ -4,15 +4,20 @@ This project applies machine learning methods to predict fatigue strength in ste
 # Data
 The dataset used in this project originates from the NIMS fatigue database.
 Download the dataset from:
+
 [https://www.kaggle.com/datasets/chaozhuang/steel-fatigue-strength-prediction/data]
+
 Place the dataset in the following directory:
+
 data/steel_fatigue_dataset.csv
 
 # Requirements
 Install dependencies with:
+
 pip install -r requirements.txt
 
 # Running the Analysis
+
 To reproduce the results in the paper, run:
 python main.py
 
