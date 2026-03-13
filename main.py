@@ -1,4 +1,8 @@
 """
+Usage:
+- python main.py             : Run standard evaluation
+- python main.py ablation    : Run full ablation study
+
 Main execution script for Steel Fatigue Strength Prediction.
 Outputs:
 1. Traditional Linear Regression (OLS) evaluation and plot
@@ -77,5 +81,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
