@@ -43,7 +43,7 @@ def main():
         # Ridge Regression
         print(f"[{name}] Running Ridge Analysis...")
         best_alpha = find_best_alpha(X_train, y_train, name)
-        print(f"      > Best Ridge Alpha: {best_alpha:.4f}")
+        print(f"Best Ridge Alpha: {best_alpha:.4f}")
         
         ridge_model = train_final_ridge(X_train, y_train, best_alpha)
         ridge_pred = ridge_model.predict(X_test)
@@ -69,3 +69,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
