@@ -73,22 +73,24 @@ def run_xgboost_optimization(X_train, y_train, name, n_trials=100):
             'min_child_weight': trial.suggest_int('min_child_weight', 1, 10),
             'subsample': 0.8,
             'colsample_bytree': 0.8,
+            "random_state": 42
         }
-        model = XGBRegressor(**params, random_state=42)
+        model = XGBRegressor(**params)
         cv = KFold(n_splits=5, shuffle=True, random_state=42)
         scores = cross_val_score(model, X_train, y_train, cv=cv, scoring="r2")
         return scores.mean()
 
+    optuna.logging.set_verbosity(optuna.logging.WARNING)
     study = optuna.create_study(
         direction='maximize',
         sampler=optuna.samplers.TPESampler(seed=42)
     )
 
-    study.optimize(objective, n_trials=n_trials)
+    study.optimize(objective, n_trials=n_trials, show_progress_bar=True)
 
     # Plot Parameter Importance
     optuna.visualization.matplotlib.plot_param_importances(study)
-    plt.title(f"[{name}] XGBoost Parameter Importance")
+    plt.title(f"Parameter Importance")
     plt.tight_layout()
     plt.savefig(f"results/{name}_xgb_param_importance.png", dpi=300)
     plt.close()
