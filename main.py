@@ -1,9 +1,9 @@
 """
 Main execution script for Steel Fatigue Strength Prediction.
 Outputs:
-1. Traditional Linear Regression (OLS) evaluation.
-2. Ridge Regression tuning and evaluation.
-3. XGBoost Optuna tuning, evaluation, and all diagnostic plots.
+1. Traditional Linear Regression (OLS) evaluation and plot
+2. Ridge Regression tuning and evaluation and plot
+3. XGBoost Optuna tuning, evaluation, and plot
 """
 
 import os
@@ -31,41 +31,41 @@ def main():
 
         X_train, X_test, y_train, y_test = all_datasets[name]
 
-        # --- 1. Traditional Linear Regression (OLS) ---
+        # Traditional Linear Regression (OLS)
         print(f"[{name}] Running Traditional Linear Regression...")
         ols_model = train_linear_regression(X_train, y_train)
         ols_pred = ols_model.predict(X_test)
+        plot_results(y_test, ols_pred, f"Ridge_{name}", save_path=f"results/{name}_ols_eval.png")
+        
         ols_metrics = calculate_metrics(y_test, ols_pred)
-        print(f"      > OLS Results: R2={ols_metrics['R2']:.4f}, RMSE={ols_metrics['RMSE']:.2f}")
+        print(f"OLS Results: R2={ols_metrics['R2']:.4f}, RMSE={ols_metrics['RMSE']:.2f}, MAE={ols_metrics['MAE']:.4f}")
 
-        # --- 2. Ridge Regression (Tuning & Coefficients) ---
+        # Ridge Regression
         print(f"[{name}] Running Ridge Analysis...")
         best_alpha = find_best_alpha(X_train, y_train, name)
-        # Note: Ridge metrics can be added here if needed,
-        # but usually we use it for coefficient analysis.
         print(f"      > Best Ridge Alpha: {best_alpha:.4f}")
+        
+        ridge_model = train_final_ridge(X_train, y_train, best_alpha)
+        ridge_pred = ridge_model.predict(X_test)
+        plot_results(y_test, ridge_pred, f"Ridge_{name}", save_path=f"results/{name}_ridge_eval.png")
+        
+        ridge_metrics = calculate_metrics(y_test, ridge_pred)
+        print(f"Ridge Results: R2={ridge_metrics['R2']:.4f}, RMSE={ridge_metrics['RMSE']:.2f}, MAE={ridge_metrics['MAE']:.4f}")
 
-        # --- 3. XGBoost (Optuna Tuning & Performance) ---
+        # XGBoost
         print(f"[{name}] Optimizing XGBoost...")
         best_params, study = run_xgboost_optimization(X_train, y_train, name, n_trials=100)
+        print(f"Best XGBoost Params: {best_params}")
+        
         final_xgb = train_final_xgboost(X_train, y_train, best_params)
         xgb_pred = final_xgb.predict(X_test)
+        plot_results(y_test, xgb_pred, f"Ridge_{name}", save_path=f"results/{name}_xgb_eval.png")
+        
         xgb_metrics = calculate_metrics(y_test, xgb_pred)
+        print(f"XGBoost Results: R2={xgb_metrics['R2']:.4f}, RMSE={xgb_metrics['RMSE']:.2f}, MAE={xgb_metrics['MAE']:.4f}")
 
-        print(f"      > Best XGBoost Params: {best_params}")
-        print(f"      > XGBoost Results: R2={xgb_metrics['R2']:.4f}, RMSE={xgb_metrics['RMSE']:.2f}")
-
-        # --- Plotting Results ---
-        # Saving XGBoost final diagnostic plot
-        plot_results(
-            y_test,
-            xgb_pred,
-            f"XGBoost_{name}",
-            save_path=f"results/{name}_xgb_final_eval.png"
-        )
-
-    print("\n" + "="*60)
     print(" All evaluations complete. Results saved in 'results/' folder.")
 
 if __name__ == "__main__":
+
     main()
