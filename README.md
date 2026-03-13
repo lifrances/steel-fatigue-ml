@@ -5,7 +5,7 @@ Fatigue failure accounts for a large proportion of structural failures in engine
 
 This project investigates whether physics-informed feature engineering combined with machine learning models can improve fatigue strength prediction for steels. We compare three regression models: 
 
-- Linear Regression
+- Linear Regression (OLS)
 - Ridge Regression
 - XGBoost
 
@@ -91,7 +91,7 @@ python main.py
 
 The script will: 
 1. Load datasets from `data/`
-2. Train and evaluate Linear Regression
+2. Train and evaluate Linear Regression (OLS)
 3. Tune Ridge Regression hyperparameters
 4. Perform XGBoost hyperparameter optimization using Optuna
 5. Evaluate the final XGBoost model
