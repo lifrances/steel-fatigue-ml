@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -26,6 +27,7 @@ def load_all_datasets(data_path):
 
     datasets = {}
     for name, filename in files.items():
-        df = pd.read_csv(f"{data_path}/{filename}")
+        file_path = os.path.join(data_path, filename)
+        df = pd.read_csv(file_path)
         datasets[name] = data_split(df)
     return datasets
