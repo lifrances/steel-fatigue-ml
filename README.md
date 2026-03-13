@@ -80,7 +80,7 @@ Required packages include:
 - `scikit-learn`
 - `xgboost`
 - `optuna`
-- `matplotlob`
+- `matplotlib`
 
 ## Usage
 
