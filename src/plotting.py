@@ -29,8 +29,6 @@ def plot_results(y_test, y_pred, name, save_path=None):
     ax1.legend()
     ax1.grid(True, linestyle=':', alpha=0.6)
 
-    # Plot residual analysis
-    # This plot helps identify if the model consistently over/under predicts at certain ranges.
     ax2.scatter(y_test, residuals, alpha=0.6, color='indianred', edgecolors='k', s=40)
     ax2.axhline(0, color='black', linestyle='-', lw=1.5)
 
@@ -43,5 +41,6 @@ def plot_results(y_test, y_pred, name, save_path=None):
 
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
+
 
     plt.show()
