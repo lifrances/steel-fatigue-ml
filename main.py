@@ -7,19 +7,20 @@ Outputs:
 """
 
 import os
+import sys
 import pandas as pd
 from src.data_loader import load_all_datasets
 from src.optimization import find_best_alpha, run_xgboost_optimization
-from src.model import train_linear_regression, train_final_xgboost, calculate_metrics
+from src.model import train_linear_regression, train_final_ridge, train_final_xgboost, calculate_metrics
 from src.plotting import plot_results
 
-def run_model(X_train, X_test, y_train, y_test, name)
+def run_model(X_train, X_test, y_train, y_test, name):
 
     # Traditional Linear Regression (OLS)
     print(f"[{name}] Running Traditional Linear Regression...")
     ols_model = train_linear_regression(X_train, y_train)
     ols_pred = ols_model.predict(X_test)
-    plot_results(y_test, ols_pred, f"Ridge_{name}", save_path=f"results/{name}_ols_eval.png")
+    plot_results(y_test, ols_pred, f"OLS_{name}", save_path=f"results/{name}_ols_eval.png")
     
     ols_metrics = calculate_metrics(y_test, ols_pred)
     print(f"OLS Results: R2={ols_metrics['R2']:.4f}, RMSE={ols_metrics['RMSE']:.2f}, MAE={ols_metrics['MAE']:.4f}")
@@ -43,7 +44,7 @@ def run_model(X_train, X_test, y_train, y_test, name)
     
     final_xgb = train_final_xgboost(X_train, y_train, best_params)
     xgb_pred = final_xgb.predict(X_test)
-    plot_results(y_test, xgb_pred, f"Ridge_{name}", save_path=f"results/{name}_xgb_eval.png")
+    plot_results(y_test, xgb_pred, f"XGBoost_{name}", save_path=f"results/{name}_xgb_eval.png")
     
     xgb_metrics = calculate_metrics(y_test, xgb_pred)
     print(f"XGBoost Results: R2={xgb_metrics['R2']:.4f}, RMSE={xgb_metrics['RMSE']:.2f}, MAE={xgb_metrics['MAE']:.4f}")
@@ -73,6 +74,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
